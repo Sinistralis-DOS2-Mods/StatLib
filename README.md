@@ -5,7 +5,7 @@ The Skill Generator is meant as a tool to help generate permutations of an abili
 Currently, it only equals the editor in capability. Weapon Modifiers are next, which will allow a skill to be swapped out for another based on Equipped Weapon.
 
 ## How to Use
-Usage should be simple. You need Node 8.0.0 or later to run the project. Upon downloading it, you will need to open config.js and point it to the mod folder you wish to generate to. I also recommend you change the namespace so your skills don't clash with other mods. Do not worry about changing the definitionAbsolutePath, that is only needed for generating the files located in lib/fields. Unless Larian releases new features to the editor and I fail to update the project, this should never be needed, but has been included just incase.
+Usage should be simple. You need [Node 8.0.0](https://nodejs.org/en/) or later to run the project. Upon downloading it, you will need to open config.js and point it to the mod folder you wish to generate to. I also recommend you change the namespace so your skills don't clash with other mods. Do not worry about changing the definitionAbsolutePath, that is only needed for generating the files located in lib/fields. Unless Larian releases new features to the editor and I fail to update the project, this should never be needed, but has been included just incase.
 
 You will find a list of JS files under the Skill directory. This is where you define skills. You can import helper methods if your editor supports intellisense which will make figuring out what fields are available easier (see Projectile.js for an example). All you need to define is the column and value (Ex. Name: 'Ricochet'), the app will handle everything else.
 
