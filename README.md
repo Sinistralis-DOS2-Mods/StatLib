@@ -13,7 +13,7 @@ There will be a list of custom fields coming soon, such as foci, weaponModifiers
 
 Currently, it will spit out files into a test directory. This will soon be updated to put them in the actual mod directory. I still want to test this some more before I do so.
 
-To build stat files, run the command 'npm run build'.
+To build stat files, run the command 'npm run build' in a terminal. If you downloaded VSCode, it should have an integrated terminal that makes this simple to do if you aren't familiar with this kind of thing.
 
 ## Contributing to this project
 
