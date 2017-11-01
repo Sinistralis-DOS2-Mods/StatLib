@@ -11,6 +11,10 @@ You will find a list of JS files under the Skill directory. This is where you de
 
 There will be a list of custom fields coming soon, such as foci, weaponModifiers, baseModifiers (for AP/Cooldown changes, these will require an unlearn and relearn call), and more. This will also generate Osiris and Horus scripts, when implemented, to support the custom attributes.
 
+Currently, it will spit out files into a test directory. This will soon be updated to put them in the actual mod directory. I still want to test this some more before I do so.
+
+To build stat files, run the command 'npm run build'.
+
 ## Contributing to this project
 
 * [Bug reports](CONTRIBUTING.md#bugs)
