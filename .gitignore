@@ -1,1 +1,4 @@
 test/*
+*.log
+.idea/
+node_modules/

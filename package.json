@@ -1,0 +1,14 @@
+{
+  "name": "dos2-skill-generator",
+  "version": "1.0.0",
+  "description": "A tool to help with generating skill permutations to Divinity Original Sin 2. Requires Node 8.0.0 or higher.",
+  "scripts": {
+    "generateFieldDefinitions": "node ./lib/generators/skillFieldGenerator.js",
+    "build": "node ./lib/SkillBuilder.js"
+  },
+  "author": "Sinistralis",
+  "license": "MIT",
+  "dependencies": {
+    "xml2js": "^0.4.19"
+  }
+}
