@@ -2,3 +2,4 @@ test/*.stats
 *.log
 .idea/
 node_modules/
+.vscode/
