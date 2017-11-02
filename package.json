@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "A tool to help with generating skill permutations to Divinity Original Sin 2. Requires Node 8.0.0 or higher.",
   "scripts": {
-    "generateFieldDefinitions": "node ./lib/generators/skillFieldGenerator.js",
-    "build": "node ./lib/SkillBuilder.js"
+    "generateDefinitions": "node --use_strict ./lib/generators/index.js",
+    "build": "node --use_strict ./lib/SkillBuilder.js",
+    "lint": "eslint --ext .js ./",
+    "lint:fix": "eslint --ext .js ./ --fix"
   },
   "author": "Sinistralis",
   "license": "MIT",
   "dependencies": {
     "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0"
   }
 }
