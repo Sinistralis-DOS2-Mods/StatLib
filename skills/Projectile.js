@@ -1,13 +1,13 @@
 //const WEAPON_MODIFIERS = require('../lib/const/weaponModifiers');
 const { PROJECTILE_NAMES } = require('../lib/definitions/skillFields');
-const { SKILLREQUIREMENT } = require('../lib/definitions/enums');
+const { SKILL_REQUIREMENT } = require('../lib/definitions/enums');
 
 const skills = [
   {
     [PROJECTILE_NAMES.NAME]: 'Ricochet',		
     [PROJECTILE_NAMES.USING]: 'Ricochet',
-    [PROJECTILE_NAMES.DAMAGEMULTIPLIER]: 100,
-    [PROJECTILE_NAMES.REQUIREMENT]: SKILLREQUIREMENT.RANGEDWEAPON,
+    [PROJECTILE_NAMES.DAMAGE_MULTIPLIER]: 100,
+    [PROJECTILE_NAMES.REQUIREMENT]: SKILL_REQUIREMENT.RANGED_WEAPON,
   }
 ];
 
