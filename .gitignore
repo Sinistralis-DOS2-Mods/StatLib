@@ -3,4 +3,3 @@ test/*.stats
 .idea/
 node_modules/
 .vscode/
-skills/*.js
