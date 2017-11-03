@@ -7,7 +7,8 @@ const { SKILL_REQUIREMENT } = require('../lib/definitions/enums');
 
 const skills = [
   {
-    [PROJECTILE_NAMES.NAME]: 'Ricochet',		
+    // Name will automatically be prepended by Namespace and a special GENERATED tag, so you can differentiate generated skills from non-generated ones.
+    [PROJECTILE_NAMES.NAME]: 'Ricochet', // For example, this will end up being GENERATED_{NAMESPACE}_Ricochet
     [PROJECTILE_NAMES.USING]: 'Ricochet',
     [PROJECTILE_NAMES.DAMAGE_MULTIPLIER]: 100,
     [PROJECTILE_NAMES.REQUIREMENT]: SKILL_REQUIREMENT.RANGED_WEAPON,

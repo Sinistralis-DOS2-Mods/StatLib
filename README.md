@@ -12,16 +12,17 @@ Currently, it only equals the editor in capability. Weapon Modifiers are next, w
 - That's it!
 
 ## How to Use
-- The project will contain ready-made templates for you to copy and paste. You can find these templates under the skillExamples directory. These templates should be pasted into the skills directory. It is not recommended to edit these templates as they will update with new examples as the project is updated.
+- The project will contain ready-made templates for you to reference, and each type of skill/status will be pre-made for you. You can find these templates under the examples directory. These templates should be pasted into the skills directory. It is not recommended to edit these templates as they will update with new examples as the project is updated.
 - See skillExamples/Projectile.js for more detailed usage examples.
 - When you are ready to export your skills to the Editor, open a terminal and type 'npm run build'. This will automatically generate all skills and place them in the editor.
 - Currently you will need to trigger a skill build from within the Editor. This involves making a skill and saving. I will be cleaning this workflow up at a later date.
 
 ## Features
 - Robust documentation that tells you when to use ENUMs, you don't have to cross-reference the Editor. This makes this tool a far preferable skill editor once you get familiar with it as you can mass edit skills far more easily.
-- Contains equivalent features to the stat editor as far as skill generation goes. Status generation is pretty much finished but not fully implemented yet.
+- Contains equivalent features to the stat editor for skill and status generation.
 
 ## Coming Soon
+- Potion Entries
 - Hotswapping
   - This allows you to define a skill that will change behavior based on the presence of an exclusive status.
 - Foci
