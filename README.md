@@ -12,8 +12,8 @@ Currently, it only equals the editor in capability. Weapon Modifiers are next, w
 - That's it!
 
 ## How to Use
-- The project will contain ready-made templates for you to reference, and each type of skill/status will be pre-made for you. You can find these templates under the examples directory. These templates should be pasted into the skills directory. It is not recommended to edit these templates as they will update with new examples as the project is updated.
-- See skillExamples/Projectile.js for more detailed usage examples.
+- The project will contain ready-made templates for you to reference, and each type of skill/status will be pre-made for you. 
+- See examples for more detailed usage examples. I will include some examples from Ascension once I get that far.
 - When you are ready to export your skills to the Editor, open a terminal and type 'npm run build'. This will automatically generate all skills and place them in the editor.
 - Currently you will need to trigger a skill build from within the Editor. This involves making a skill and saving. I will be cleaning this workflow up at a later date.
 
