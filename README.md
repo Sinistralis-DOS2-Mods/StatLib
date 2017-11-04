@@ -23,7 +23,7 @@ Currently, it only equals the editor in capability. Weapon Modifiers are next, w
 - Extendable! See the How to Extend section below.
 
 ## Modifiers - How to create extensions for the Skill Generator
-The Skill Generator is now extendable! In config.js, you will now see a property called statModifiers. You can now import custom modifiers into this field and they will be ran for each skill, status, or stat object that is built when building your skill files. You can find documentation for Modifiers [here](Modifiers.md).
+The Skill Generator is now extendable! In config.js, you will now see a property called statModifiers. You can now import custom modifiers into this field and they will be ran for each skill, status, or stat object that is built when building your skill files. You can find documentation for Modifiers [here](MODIFIERS.md).
 
 ## Coming Soon
 - Hotswapping
