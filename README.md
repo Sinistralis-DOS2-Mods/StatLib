@@ -20,10 +20,13 @@ Currently, it only equals the editor in capability. Weapon Modifiers are next, w
 ## Features
 - Robust documentation that tells you when to use ENUMs, you don't have to cross-reference the Editor. This makes this tool a far preferable skill editor once you get familiar with it as you can mass edit skills far more easily.
 - Contains equivalent features to the stat editor for skill, status, potion, and stats generation.
+- Creating statuses, potions, and weapons attached to gear is now super simple thanks to the [associate](MODIFIERSLIST#associate) modifier.
 - Extendable! See the How to Extend section below.
 
 ## Modifiers - How to create extensions for the Skill Generator
 The Skill Generator is now extendable! In config.js, you will now see a property called statModifiers. You can now import custom modifiers into this field and they will be ran for each skill, status, or stat object that is built when building your skill files. You can find documentation for Modifiers [here](MODIFIERS.md).
+
+## [Official Modifier List](MODIFIERSLIST.md)
 
 ## Coming Soon
 - Hotswapping
@@ -32,8 +35,6 @@ The Skill Generator is now extendable! In config.js, you will now see a property
   - This allows you to define small permutations of a skill that change how it functions slightly, like with AP, Cooldown, Radius, Damage, or other such property changes. Foci will be keyed off statuses as well, and will use the most potent one available. Usage will be as simple as adding a generated status onto an item template or a boost template.
 - Mutations
   - These are heavily scripted modifiers that completely change how a skill functions, such as causing it to do hybrid damage, fork, etc. Again, this should only require you to add a status to an item to support.
-- Associations
-  - Define statuses, stats, and potions on the skill itself! No more having to go back and forth across multiple UIs just to create a single skill.
 
 ## Contributing to this project
 
