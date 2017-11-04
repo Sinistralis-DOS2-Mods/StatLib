@@ -127,7 +127,16 @@ function onStat({ stat, utils }) {
     fields: [],
   };
 
-  stat.statFields.Name = getStatName(stat.statFields.Name)`;
+  stat.statFields.Name = getStatName(stat.statFields.Name);
+
+  if (isSkillType(stat.type) && !stat.statFields.SkillType) {
+    stat.statFields.SkillType = stat.type;
+  // For some reason, in this one instance Status is not included when describing a Status.
+  } else if (isStatusType(stat.type) && !stat.statFields.Type) {
+    const statusType = stat.type.split('_');
+    statusType.splice(0,1);
+    stat.statFields.Type = statusType.join('_');
+  }
 
   for (const [key, value] of Object.entries(stat.statFields)) {
     let field;
