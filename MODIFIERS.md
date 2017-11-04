@@ -143,4 +143,3 @@ module.exports = format;
 ##Coming Soon
 - Osiris Support
 - Object Script Support
-- 
