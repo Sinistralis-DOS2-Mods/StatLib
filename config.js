@@ -28,7 +28,8 @@ const config = {
     behavior needs overridden for some reason.
   */
   statModifiers: [
-    require('./lib/modifiers/validator'),    
+    require('./lib/modifiers/validator'),
+    require('./lib/modifiers/associate'),
     require('./lib/modifiers/foci'),
     require('./lib/modifiers/weapon'),
     require('./lib/modifiers/format'),

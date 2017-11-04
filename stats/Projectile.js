@@ -1,6 +1,6 @@
 const skills = [
   
-  ];
+];
   
-  module.exports = skills;
+module.exports = skills;
   

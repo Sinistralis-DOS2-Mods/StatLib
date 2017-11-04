@@ -1,7 +1,7 @@
 # Modifiers API
 
 ```javascript
-function Modifier({ stat, addStat, utils }) {
+function onStat({ stat, addStat, utils }) {
 
 console.log(stat); 
 /*
@@ -16,12 +16,14 @@ console.log(stat);
 
   return stat;
 }
+
+module.exports = onStat;
 ```
 
 ## utils
 This is an object that contains a plethora of utility methods and data:
-- namespace
-  - The specified namespace for a project
+- getStatName(name)
+  - Takes an arbitrary stat name and returns the proper name. Ex. GENERATED\_ASC\_Ricochet
 - [skills](https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/blob/master/lib/definitions/skillFields.js)
 - [stats](https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/blob/master/lib/definitions/statFields.js)
 - [statuses](https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/blob/master/lib/definitions/statusFields.js)
@@ -29,7 +31,7 @@ This is an object that contains a plethora of utility methods and data:
 Below is an example of easily referencing some of these fields:
 
 ```javascript
-  const { namespace, skills, stats, statuses } = utils;
+  const { getStatName, skills, stats, statuses } = utils;
   const { IS_TYPE: isSkillType, SKILL_FIELDS } = skills;
   const { IS_TYPE: isStatusType, STATUS_FIELDS } = statuses;
   const { IS_TYPE: isStatType, STAT_FIELDS } = stats;
@@ -37,10 +39,12 @@ Below is an example of easily referencing some of these fields:
 
 Use these methods to help determine what kind of skill you are dealing with, or to create your own in response to custom fields!
 
-## addStat(type, stat)
-This will add a stat to the queue of type 'type'. For example:
+## addStat(type, statFields)
+This will add a stat to the queue of type 'type'. addStat will filter invalid entries for you as well, which makes it very useful for iterating over nested structures which may have stat nested with other non-stat properties.
+
+For example:
 ```javascript
-function Modifier({ stat, addStat, utils }) {
+function onStat({ stat, addStat, utils }) {
   const { skills } = utils;
   const { PROJECTILE_FIELDS } = skills;
 
@@ -57,6 +61,8 @@ function Modifier({ stat, addStat, utils }) {
 
   return stat;
 }
+
+module.exports = onStat;
 ```
 
 ## Conventions
@@ -72,7 +78,7 @@ A modifier that validates skills
 ```javascript
 const listing = {};
 
-function validatorModifier({ stat }) {
+function onStat({ stat }) {
   function checkValid() {
     if (!stat.statFields.Name) {
       throw new Error(`Encountered unnammed stat of type ${stat.type} and fields ${JSON.stringify(stat.statFields)}`);
@@ -98,14 +104,20 @@ function validatorModifier({ stat }) {
   return stat;
 }
 
-module.exports = validatorModifier;
+module.exports = onStat;
 
 ```
 
+
+
+
+
+
+
 A format modifier
 ```javascript
-function format({ stat, utils }) {
-  const { namespace, skills, stats, statuses } = utils;
+function onStat({ stat, utils }) {
+  const { getStatName, skills, stats, statuses } = utils;
   const { IS_TYPE: isSkillType, SKILL_FIELDS } = skills;
   const { IS_TYPE: isStatusType, STATUS_FIELDS } = statuses;
   const { IS_TYPE: isStatType, STAT_FIELDS } = stats;
@@ -115,7 +127,7 @@ function format({ stat, utils }) {
     fields: [],
   };
 
-  stat.statFields.Name = `GENERATED_${namespace}_${stat.statFields.Name}`;
+  stat.statFields.Name = getStatName(stat.statFields.Name)`;
 
   for (const [key, value] of Object.entries(stat.statFields)) {
     let field;
@@ -136,7 +148,97 @@ function format({ stat, utils }) {
   return newDefinition;
 }
 
-module.exports = format;
+module.exports = onStat;
+
+```
+
+
+
+
+
+
+Here is one a bit more advanced and interesting. It specifies a custom property called 'associate'. Any skill that declares associate can then go on to declare a status, potion, and optionally a weapon. The modifier will then link all these skills together for you.
+
+```javascript
+function onStat({ stat, addStat, utils }) {
+  const { getStatName, skills, stats, statuses } = utils;
+  const { IS_TYPE: isSkillType, SHOUT_NAMES } = skills;
+  const { STATUS_CONSUME_NAMES } = statuses;
+  const { POTION_NAMES, WEAPON_NAMES } = stats;
+
+  if (isSkillType(stat.type) && stat.statFields.associate) {
+    const statusName = stat.statFields.associate.Status_CONSUME ? stat.statFields.associate.Status_CONSUME[STATUS_CONSUME_NAMES.NAME] : null;
+    const potionName = stat.statFields.associate.Potion ? stat.statFields.associate.Potion[POTION_NAMES.NAME] : null;
+    const weaponName = stat.statFields.associate.Weapon ? stat.statFields.associate.Weapon[WEAPON_NAMES.NAME] : null;
+    const turns = stat.statFields.associate.turns;
+    const chance = stat.statFields.associate.chance;
+
+    if (!statusName) {
+      throw new Error(`Detected association without Status_CONSUME! Stat is ${JSON.stringify(stat)}`);
+    }
+
+    if (!potionName) {
+      throw new Error(`Detected association without Potion! Stat is ${JSON.stringify(stat)}`);
+    }
+
+    if (stat.statFields[SHOUT_NAMES.SKILL_PROPERTIES]) {
+      stat.statFields[SHOUT_NAMES.SKILL_PROPERTIES] = '';
+    }
+    stat.statFields[SHOUT_NAMES.SKILL_PROPERTIES] += `${getStatName(statusName)},${chance},${turns};`;
+
+    stat.statFields.associate.Status_CONSUME[STATUS_CONSUME_NAMES.STATS_ID] = `${getStatName(potionName)}`;
+
+    if (weaponName) {
+      stat.statFields.associate.Potion[POTION_NAMES.BONUS_WEAPON] = `${getStatName(weaponName)}`;      
+    }
+
+    for (let [associateType, associateFields] of Object.entries(stat.statFields.associate)) {
+      addStat(associateType, associateFields);
+    }
+
+    delete stat.statFields.associate;
+  }
+
+  return stat;
+}
+
+module.exports = onStat;
+
+```
+
+You can then use it like this:
+
+```javascript
+const { SHOUT_NAMES } = require('../lib/definitions/skillFields');
+const { STATUS_CONSUME_NAMES } = require('../lib/definitions/statusFields');
+const { POTION_NAMES, WEAPON_NAMES } = require('../lib/definitions/statFields');
+const { DAMAGE_TYPE } = require('../lib/definitions/enums');
+
+const skills = [
+  {
+    [SHOUT_NAMES.NAME]: 'FrostCoating',
+    [SHOUT_NAMES.USING]: 'VenomCoating',
+    'associate': {
+      turns: 2,
+      chance: 100,
+      Status_CONSUME: {
+        [STATUS_CONSUME_NAMES.NAME]: 'FROST_COATING',
+        [STATUS_CONSUME_NAMES.USING]: 'VENOM_COATING',
+      },
+      Potion: {
+        [POTION_NAMES.NAME]: 'Stats_FrostCoating',
+        [POTION_NAMES.USING]: 'Stats_VenomCoating',
+      },
+      Weapon: {
+        [WEAPON_NAMES.NAME]: 'Status_FrostCoating',
+        [WEAPON_NAMES.USING]: 'Status_VenomCoating',
+        [WEAPON_NAMES.DAMAGE_TYPE]: DAMAGE_TYPE.WATER,
+      },
+    },
+  }
+];
+
+module.exports = skills;
 
 ```
 
