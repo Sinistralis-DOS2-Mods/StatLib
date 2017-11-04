@@ -18,17 +18,6 @@ console.log(stat);
 }
 ```
 
-## addStat(type, stat)
-This will add a stat to the queue of type 'type'. For example:
-```javascript
-const myStat = {
-  Name: 'MySkillName',
-  'Damage Multiplier': '120',
-};
-
-addStat('Projectile', myStat);
-```
-
 ## utils
 This is an object that contains a plethora of utility methods and data:
 - namespace
@@ -47,6 +36,28 @@ Below is an example of easily referencing some of these fields:
 ```
 
 Use these methods to help determine what kind of skill you are dealing with, or to create your own in response to custom fields!
+
+## addStat(type, stat)
+This will add a stat to the queue of type 'type'. For example:
+```javascript
+function Modifier({ stat, addStat, utils }) {
+  const { skills } = utils;
+  const { PROJECTILE_FIELDS } = skills;
+
+  if (myStat.statFields.someField) {
+    const myStat = {
+      [PROJECTILE_FIELDS.NAME]: 'MySkillName',
+      [PROJECTILE_FIELDS.DAMAGE_MODIFIER]: '120',
+    };
+
+    addStat('Projectile', myStat);
+
+    delete myStat.statFields.someField;
+  }
+
+  return stat;
+}
+```
 
 ## Conventions
 - Modifiers may request custom fields be added to the stat object, but **MUST REMOVE** these fields when returning the stat object for further processing. This can be done via `delete stat.statFields.customField` or by creating a new object without the field and returning it.
@@ -132,3 +143,4 @@ module.exports = format;
 ##Coming Soon
 - Osiris Support
 - Object Script Support
+- 
