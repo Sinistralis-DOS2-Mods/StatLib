@@ -3,16 +3,19 @@
 ```javascript
 function Modifier({ stat, addStat, utils }) {
 
-}
+console.log(stat); 
+/*
+  {
+    type: 'Projectile',
+    statFields: {
+      Name: 'MySkillName',
+      'Damage Multiplier': '120',
+    },
+  };
+*/ 
 
-// Example Stat Object
-const stat = {
-  type: 'Projectile',
-  statFields: {
-    Name: 'MySkillName',
-    'Damage Multiplier': '120',
-  },
-};
+  return stat;
+}
 ```
 
 ## addStat(type, stat)
