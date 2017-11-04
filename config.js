@@ -18,7 +18,21 @@ const config = {
 
   // Used to generate definitions, don't worry about these.
   definitionsAbsolutePath: 'D:\\Steam\\steamapps\\common\\Divinity Original Sin 2\\Data\\Editor\\Mods\\Definitions_28958617-d15c-4153-92ba-628aa68afb84\\Stats',
-  enumerationsDefinitionsAbsolutePath: 'D:\\Steam\\steamapps\\common\\Divinity Original Sin 2\\Data\\Editor\\Config\\Stats\\Enumerations.xml'
+  enumerationsDefinitionsAbsolutePath: 'D:\\Steam\\steamapps\\common\\Divinity Original Sin 2\\Data\\Editor\\Config\\Stats\\Enumerations.xml',
+
+  /*
+    Include modifiers here. They will be inserted into the build process when skills are built. See Modifiers in README.md for more information.
+   
+    Unless you know what you are doing, it is highly recommended that the format modifier is not altered or moved. It formats stats to be written to disk and
+    mutates skills in such a way it will break anything that comes afterward. It is included for advanced users who wish to change how formatting is done or if
+    behavior needs overridden for some reason.
+  */
+  statModifiers: [
+    require('./lib/modifiers/validator'),    
+    require('./lib/modifiers/foci'),
+    require('./lib/modifiers/weapon'),
+    require('./lib/modifiers/format'),
+  ],
 };
 
 module.exports = config;
