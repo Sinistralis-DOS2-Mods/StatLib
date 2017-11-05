@@ -26,6 +26,8 @@ Currently, it only equals the editor in capability. Weapon Modifiers are next, w
 ## Modifiers - How to create extensions for the Skill Generator
 The Skill Generator is now extendable! In config.js, you will now see a property called statModifiers. You can now import custom modifiers into this field and they will be ran for each skill, status, or stat object that is built when building your skill files. You can find documentation for Modifiers [here](MODIFIERS.md).
 
+Modifiers are capable of using other Modifiers as well! Once we have more modifiers supported, I will provide an example, but this will allow very complex skill behavior.
+
 ## [Official Modifier List](MODIFIERSLIST.md)
 
 ## Coming Soon
@@ -35,6 +37,8 @@ The Skill Generator is now extendable! In config.js, you will now see a property
   - This allows you to define small permutations of a skill that change how it functions slightly, like with AP, Cooldown, Radius, Damage, or other such property changes. Foci will be keyed off statuses as well, and will use the most potent one available. Usage will be as simple as adding a generated status onto an item template or a boost template.
 - Mutations
   - These are heavily scripted modifiers that completely change how a skill functions, such as causing it to do hybrid damage, fork, etc. Again, this should only require you to add a status to an item to support.
+- Elevate
+  - These skills will perform custom effects depending on the height difference. You will be able to specify ranges ( >3, <-2, -2 - 3) as well.
 
 ## Contributing to this project
 
