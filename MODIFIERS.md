@@ -251,6 +251,6 @@ module.exports = skills;
 
 ```
 
-##Coming Soon
+## Coming Soon
 - Osiris Support
 - Object Script Support
