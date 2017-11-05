@@ -69,7 +69,7 @@ module.exports = onStat;
 - Modifiers may request custom fields be added to the stat object, but **MUST REMOVE** these fields when returning the stat object for further processing. This can be done via `delete stat.statFields.customField` or by creating a new object without the field and returning it.
 - Modifiers are expected to return the stat object, regardless of what else they do.
 - Modifiers are expected to not mutate or change the stat object in any way beyond acting on it's custom fields. The exception to this rule is the format modifier, which comes last and formats data to be written to disk.
-- Modifiers are expected to export only the modifier function. 
+- Modifiers are expected to export a function named 'onStat'. They can optionally export a getStory and a getScript function will with allow them to inject scripts to write to disk.
 - Modifiers may throw Exceptions to halt building
 
 ## Examples

@@ -10,7 +10,7 @@ const config = {
    * The namespace to prefix everything with to prevent mod conflicts.
    * Highly recommend changing this to something that fits your mod. I use ASC for Ascension, as an example.
   */
-  namespace: 'YOUR_NAMESPACE_HERE',
+  namespace: 'ASC',
 
   modStatsPath: `${gameAbsolutePath}\\Data\\Editor\\Mods\\${modId}\\Stats`,
   modScriptsPath: `${gameAbsolutePath}\\Data\\Public\\${modId}\\Scripts`,
@@ -29,6 +29,7 @@ const config = {
   */
   statModifiers: [
     require('./lib/modifiers/validator'),
+    require('./lib/modifiers/remote'),
     require('./lib/modifiers/associate'),
     require('./lib/modifiers/foci'),
     require('./lib/modifiers/weapon'),
