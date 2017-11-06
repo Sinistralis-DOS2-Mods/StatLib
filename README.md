@@ -18,17 +18,21 @@ Currently, it only equals the editor in capability. Weapon Modifiers are next, w
 - Currently you will need to trigger a skill build from within the Editor. This involves making a skill and saving. I will be cleaning this workflow up at a later date.
 
 ## Features
-- Robust documentation that tells you when to use ENUMs, you don't have to cross-reference the Editor. This makes this tool a far preferable skill editor once you get familiar with it as you can mass edit skills far more easily.
 - Contains equivalent features to the stat editor for skill, status, potion, and stats generation.
-- Creating statuses, potions, and weapons attached to gear is now super simple thanks to the [associate](MODIFIERSLIST#associate) modifier.
+- Supports advanced skill creation that you can't perform in the editor thanks to the Modifier system.
+- Creating statuses, potions, and weapons attached to skills is now super simple thanks to the [associate](MODIFIERSLIST#associate) modifier.
 - Extendable! See the How to Extend section below.
+- Built for Duplication! The Skill Generator breaks apart common and non-common parts so that even if multiple mods use this tool, it won't duplicate unnessecary scripts and skills.
 
-## Modifiers - How to create extensions for the Skill Generator
-The Skill Generator is now extendable! In config.js, you will now see a property called statModifiers. You can now import custom modifiers into this field and they will be ran for each skill, status, or stat object that is built when building your skill files. You can find documentation for Modifiers [here](MODIFIERS.md).
+## What are Modifiers?
+You can think of Modifiers like an Assembly Line. Each stat you make is is put through this assembly line, and each Modifier inspects it. Depending on what each Modifier is meant to do, it can react to specific keywords in a skill description, which in turn can cause it to create script or even additional stats in response to yours, which are themselves sent through the Assembly Line.
 
-Modifiers are capable of using other Modifiers as well! Once we have more modifiers supported, I will provide an example, but this will allow very complex skill behavior.
+This means that each feature added by a Modifier can be nested within other Modifiers! Still doesn't make sense? Don't worry! This project details what each Modifier is capable of doing, and provides examples within the application to get your start. Click [here](MODIFIERSLIST.md) for a list of currently supported Modifiers to get started.
 
-## [Official Modifier List](MODIFIERSLIST.md)
+## How to create your own Modifier for the Skill Generator
+Want a behavior that currently isn't supported? Don't fret, the Skill Generator is built to be extended! You can create your own Modifier and add it to the Skill Generator, or you can submit it for a PR to be added to the official list.
+
+To see how to build your own Modifier, click [here](MODIFIERS.md) for a complete rundown of the Modifier API and coding conventions.
 
 ## Coming Soon
 - Hotswapping
