@@ -10,7 +10,7 @@ const skills = [
     [PROJECTILE_NAMES.DAMAGE_RANGE]: 10,
     [PROJECTILE_NAMES.DESCRIPTION]: 'Lob a giant rock filled with sticky oil that will deal [1] and physical damage on landing creating a pool of oil, slowing enemies trapped within.',
     [PROJECTILE_NAMES.STATS_DESCRIPTION_PARAMS]: 'Damage',
-    hybrid: {
+    remote: {
       [PROJECTILE_NAMES.ABILITY]: SKILL_ABILITY.EARTH,
       [PROJECTILE_NAMES.DAMAGE_MULTIPLIER]: 65,
       [PROJECTILE_NAMES.DAMAGE_RANGE]: 10,
