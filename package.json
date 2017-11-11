@@ -4,7 +4,7 @@
   "description": "A tool to help with generating skill permutations to Divinity Original Sin 2. Requires Node 8.0.0 or higher.",
   "scripts": {
     "generateDefinitions": "node --use_strict ./lib/generators/index.js",
-    "build": "node --use_strict ./lib/StatBuilder.js",
+    "build": "node --use_strict main.js",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js ./ --fix"
   },

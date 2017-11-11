@@ -22,10 +22,7 @@ const config = {
 
   /*
     Include modifiers here. They will be inserted into the build process when skills are built. See Modifiers in README.md for more information.
-   
-    Unless you know what you are doing, it is highly recommended that the format modifier is not altered or moved. It formats stats to be written to disk and
-    mutates skills in such a way it will break anything that comes afterward. It is included for advanced users who wish to change how formatting is done or if
-    behavior needs overridden for some reason.
+    For now, please ensure format is always last. I will fix this later so this doesn't need to be the case.
   */
   statModifiers: [
     require('./lib/modifiers/validator'),
@@ -34,6 +31,16 @@ const config = {
     require('./lib/modifiers/foci'),
     require('./lib/modifiers/weapon'),
     require('./lib/modifiers/format'),
+  ],
+
+  /*
+    Include extensions here. Extensions are scripts meant to be used as a type of library for common functionality and should expose methods
+    for modifiers to leverage.
+  */
+  scriptExtensions: [
+    require('./lib/extensions/core'),
+    require('./lib/extensions/onTurn'),
+    require('./lib/extensions/remote'),
   ],
 };
 
