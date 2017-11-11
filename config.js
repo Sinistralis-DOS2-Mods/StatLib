@@ -30,7 +30,7 @@ const config = {
     require('./lib/modifiers/associate'),
     require('./lib/modifiers/foci'),
     require('./lib/modifiers/weapon'),
-    require('./lib/modifiers/format'),
+    require('./lib/modifiers/default'),
   ],
 
   /*

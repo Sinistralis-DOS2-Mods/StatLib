@@ -1,5 +1,6 @@
-const skills = [
+const stats = [
   
 ];
   
-module.exports = skills;
+module.exports = stats;
+  
