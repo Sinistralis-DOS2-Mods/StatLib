@@ -13,9 +13,9 @@ Every stat is passed through a "pipeline". This pipeline is comprised of modifie
 - Modifiers may export any of the following properties
   - **OnStat**: Fired whenever a stat is ready to be processed. Exporting this is required.
   - OnLoad: Fired before stat processing. Useful for initializing naming across multiple files when working with template strings.
-  - getLibs: Fired after stat processing. Use this function to export any code that does not depend on the stat of an ability. If multiple mods ran your code, getLibs should always return the exact same result. Nothing in this script should be namespaced by project.
-  - getDict: Fired after stat processing. Use this function to export any dictionary, or list-like, code that hooks into your lib scripts.
-  - name: Required if you export dict scripts. Use this to identify your modification. This will likely get other uses in the future for determining build errors and such.
+   - name: Required if you export scripts. Use this to identify your modification. This will likely get other uses in the future for determining build errors and such.
+  - getLibs: **Ignored if name is not specified.** Fired after stat processing. Use this function to export any code that does not depend on the stat of an ability. If multiple mods ran your code, getLibs should always return the exact same result. Nothing in this script should be namespaced by project.
+  - getDict: **Ignored if name is not specified.** Fired after stat processing. Use this function to export any dictionary, or list-like, code that hooks into your lib scripts.
 
 - Modifiers are always expected to return a stat object. This should almost always be the same one passed in. If you need to generate additional stat objects as a result of processing, use addStat.
 - Modifiers may mutate the stat how the like, but it is recommended to be friendly about it. Try to only add onto, as opposed to overwriting, unless you have good reason. If you are expecting a custom property, ensure that the property is deleted from the object before returning the stat.
