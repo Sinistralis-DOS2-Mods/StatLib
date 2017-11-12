@@ -40,7 +40,7 @@ To see how to build your own Modifier, click [here](MODIFIERS.md) for a complete
 ## What are Extensions?
 In addition to Modifiers, the Skill Generator now supports Script Extensions. Modifiers can make use of Script Extensions to allow advanced skill creation without the need to script.
 
-## Creating your own Extension
+## How to create your own Extension for the Skill Generator
 Similar to Modifiers, Extensions can be plugged into the Skill Generator, which will expose them to every modifier. This allows you to treat Extensions as a type of "library" from which any modifier can draw from.
 
 To see how to build your own Extension, click [here](EXTENSIONS.md) for a complete rundown of the Extension API and coding conventions.
