@@ -25,7 +25,7 @@ The Skill Generator is meant as a tool to help generate permutations of an abili
 - Supports advanced skill creation that you can't perform in the editor thanks to the Modifier system.
 - Creating statuses, potions, and weapons attached to skills is now super simple thanks to the [associate](MODIFIERSLIST#associate) module.
 - Attach remote damage effects to your skills, allowing you to create hybrid scaling skills, multi-elemental type skills, and more thanks to the [remote](MODIFIERSLIST#remote) module.
-- Extendable! See the How to Extend section below.
+- Extendable! See the Modifier and Extension sections below.
 
 ## What are Modifiers?
 You can think of Modifiers like an Assembly Line. Each stat you make is is put through this assembly line, and each Modifier inspects it. Depending on what each Modifier is meant to do, it can react to specific keywords in a skill description, which in turn can cause it to create script or even additional stats in response to yours, which are themselves sent through the Assembly Line.
