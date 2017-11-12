@@ -80,5 +80,5 @@ const skills = [
 The validate modifier offers no functionality, but instead helps ensure you create skills correctly. It looks for things like duplicate stat names, or invalid stat names, and notifies you of them.
 
 
-## format (skills :heavy_check_mark: | statuses :heavy_check_mark: | stats :heavy_check_mark:)
-The format modifier offers no functionality, but exists to help format data into an easily writable format for the application. It also ensures proper naming schema as well as ensuring skills and statuses are tagged with proper SkillTypes. The format modifier will be deprecated once I find the time to change how the XMLWriter works, but for now is unfortunately an exception to the rule of "Don't mutate stat objects".
+## default (skills :heavy_check_mark: | statuses :heavy_check_mark: | stats :heavy_check_mark:)
+The default modifier helps by assigning common-sense defaults to fields. Currently it only handles the "Type" field of Statuses and Skills, so you don't need to worry about assigning those.
