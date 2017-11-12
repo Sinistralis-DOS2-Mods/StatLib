@@ -29,6 +29,12 @@ Dictionaries are the opposite. They typically expose functions into Modification
 **API Parameters**
 
 ```javascript
+let myCoolUtility = '';
+
+function myCoolExtension(skillName) {
+  //Do Stuff
+}
+
 /**
  * @param {function} addExtension(name, {functionName:function}) - To expose functions into modifiers, call this function exactly once. Pass in a name and an object containing a set of functionName:function declarations. These will be exposed to each modifier.
  * @param {Object} utils - A grouping of utility functions to help you author extensions.
@@ -38,6 +44,15 @@ Dictionaries are the opposite. They typically expose functions into Modification
  * @param {object} utils.statuses - Contains objects describing every status type in the game and it's XML configuration. See https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/blob/master/lib/definitions/statuses.js for details.
  * @param {object} utils.stats - Contains objects describing every stat type in the game and it's XML configuration. See https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/blob/master/lib/definitions/stats.js for details.
 */
+function onLoad({ addExtension, utils }) {
+  const { getCommonName } = utils;
+  
+  myCoolUtility = getCommonName('UTILITY_STATUS');
+
+  addExtension('myExtensionName', {
+   myCoolExtension,
+  });
+}
 ```
 
 **getLibs**
