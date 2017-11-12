@@ -97,4 +97,4 @@ module.exports = {
 
 ## Examples
 
-If you want to see some examples of how to make modifiers, feel free to check the officially supported modifiers located with this project. You can find them [here](https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/tree/master/lib/extensions).
+If you want to see some examples of how to make extensions, feel free to check the officially supported extensions located with this project. You can find them [here](https://github.com/Sinistralis-DOS2-Mods/SkillGenerator/tree/master/lib/extensions).
