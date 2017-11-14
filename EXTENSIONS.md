@@ -4,7 +4,7 @@ This page documents the Extension API incase you want to contribute your own cus
 
 ## How Extensions Work
 
-Extensions are initialized before any stat processing begins, even before Modifiers have onLoad called. During this time, you will want to declare your Extension and Modifiers naming conventions and export that as a function so Modifiers can access your common naming conventions. Any stats added from an Extension are also tagged as common, meaning they will overwrite one another if multiple mods use this utility in the interest of saving space and processing.
+Extensions are initialized before any stat processing begins, even before Modifiers have onLoad called. During this time, you will want to declare your Extension and Modifiers naming conventions and export that as a function so Modifiers can access your common naming conventions.
 
 Extensions can be broken out into two categories, Libraries and Dictionaries. This is more of a pattern I have seen emerage and isn't strictly enforced in any fashion.
 
